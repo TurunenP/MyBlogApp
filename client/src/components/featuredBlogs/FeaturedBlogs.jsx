@@ -1,9 +1,9 @@
-import React from 'react'
-import classes from './featuredBlogs.module.css'
-import mountainImg1 from '../../assets/mountain1.jpg'
-import mountainImg2 from '../../assets/mountain2.jpg'
-import {MdOutlinePreview} from 'react-icons/md'
-import {AiFillLike} from 'react-icons/ai'
+import React from "react";
+import classes from "./featuredBlogs.module.css";
+import mountainImg1 from "../../assets/mountain1.jpg";
+import mountainImg2 from "../../assets/mountain2.jpg";
+import { MdOutlinePreview } from "react-icons/md";
+import { AiFillLike } from "react-icons/ai";
 
 const FeaturedBlogs = () => {
   return (
@@ -26,11 +26,16 @@ const FeaturedBlogs = () => {
                 </div>
                 <h4>Blog 1 title</h4>
                 <p className={classes.blogDesc}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa corrupti harum quidem.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+                  corrupti harum quidem.
                 </p>
                 <div className={classes.authorAndCreatedAt}>
-                  <span><span>Author:</span> Villy</span>
-                  <span><span>Created:</span> 27-02-2023</span>
+                  <span>
+                    <span>Author:</span> Name
+                  </span>
+                  <span>
+                    <span>Created:</span> 27-02-2023
+                  </span>
                 </div>
               </div>
             </div>
@@ -41,11 +46,16 @@ const FeaturedBlogs = () => {
               <div className={classes.secondaryBlogData}>
                 <h4>Blog 2 title</h4>
                 <p className={classes.desc}>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, hic inventore? Atque?
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Odit, hic inventore? Atque?
                 </p>
                 <div className={classes.authorAndCreatedAt}>
-                  <span><span>Author:</span> Villy</span>
-                  <span><span>Created:</span> 27-02-2023</span>
+                  <span>
+                    <span>Author:</span> Name
+                  </span>
+                  <span>
+                    <span>Created:</span> 27-02-2023
+                  </span>
                 </div>
               </div>
             </div>
@@ -54,11 +64,16 @@ const FeaturedBlogs = () => {
               <div className={classes.secondaryBlogData}>
                 <h4>Blog 3 title</h4>
                 <p className={classes.desc}>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, hic inventore? Atque?
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Odit, hic inventore? Atque?
                 </p>
                 <div className={classes.authorAndCreatedAt}>
-                  <span><span>Author:</span> Villy</span>
-                  <span><span>Created:</span> 27-02-2023</span>
+                  <span>
+                    <span>Author:</span> Name
+                  </span>
+                  <span>
+                    <span>Created:</span> 27-02-2023
+                  </span>
                 </div>
               </div>
             </div>
@@ -66,7 +81,7 @@ const FeaturedBlogs = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FeaturedBlogs
+export default FeaturedBlogs;
