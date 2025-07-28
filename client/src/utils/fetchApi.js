@@ -1,52 +1,81 @@
-// const BASE_URL = "http://localhost:5001";
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
-console.log("BASE_URL used by fetchApi:", BASE_URL);
+// // const BASE_URL = "http://localhost:5001";
 
-export const request = async (
-  url,
-  method,
-  headers = {},
-  body = {},
-  isNotStringified = false
-) => {
-  let res;
-  let data;
-  switch (method) {
-    case "GET":
-      res = await fetch(BASE_URL + url, { headers });
-      data = await res.json();
-      return data;
+// const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+// console.log("BASE_URL used by fetchApi:", BASE_URL);
 
-    case "POST":
-      // if we send form data, it is not content-type:application/json,
-      // hence the bonus param
-      if (isNotStringified) {
-        res = await fetch(BASE_URL + url, { headers, method, body });
-        data = await res.json();
-      } else {
-        res = await fetch(BASE_URL + url, {
-          headers,
-          method,
-          body: JSON.stringify({ ...body }),
-        });
-        data = await res.json();
-      }
-      return data;
+// export const request = async (
+//   url,
+//   method,
+//   headers = {},
+//   body = {},
+//   isNotStringified = false
+// ) => {
+//   let res;
+//   let data;
+//   switch (method) {
+//     case "GET":
+//       res = await fetch(BASE_URL + url, { headers });
+//       data = await res.json();
+//       return data;
 
-    case "PUT":
-      res = await fetch(BASE_URL + url, {
-        headers,
-        method,
-        body: JSON.stringify({ ...body }),
-      });
-      data = await res.json();
-      return data;
+//     case "POST":
+//       // if we send form data, it is not content-type:application/json,
+//       // hence the bonus param
+//       if (isNotStringified) {
+//         res = await fetch(BASE_URL + url, { headers, method, body });
+//         data = await res.json();
+//       } else {
+//         res = await fetch(BASE_URL + url, {
+//           headers,
+//           method,
+//           body: JSON.stringify({ ...body }),
+//         });
+//         data = await res.json();
+//       }
+//       return data;
 
-    case "DELETE":
-      res = await fetch(BASE_URL + url, { headers, method });
-      data = await res.json();
-      return data;
-    default:
-      return;
+//     case "PUT":
+//       res = await fetch(BASE_URL + url, {
+//         headers,
+//         method,
+//         body: JSON.stringify({ ...body }),
+//       });
+//       data = await res.json();
+//       return data;
+
+//     case "DELETE":
+//       res = await fetch(BASE_URL + url, { headers, method });
+//       data = await res.json();
+//       return data;
+//     default:
+//       return;
+//   }
+// };
+
+//Render
+
+// const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+// console.log("BASE_URL used by fetchApi:", BASE_URL);
+
+export const request = async (url, method, body, token) => {
+  const options = {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  if (body) {
+    options.body = JSON.stringify(body);
   }
+
+  if (token) {
+    options.headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  const res = await fetch(BASE_URL + url, options); // 👈 append path to BASE_URL
+  const data = await res.json();
+  return data;
 };
+
+export const BASE_URL = process.env.REACT_APP_BACKEND_URL;

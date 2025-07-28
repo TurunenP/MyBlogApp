@@ -1,21 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
 .container {
     min-height: 1200px;
     width: 100%;
+    padding: 0.1rem;    
 }
 
-.wrapper {
+/* .wrapper {
     max-width: 1180px;
     height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+} */
+
+.wrapper {
+    max-width: 1180px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    margin-bottom: 2rem;
 }
 
 .wrapper>h3 {
-    font-size: 28px;
+    font-size: 40px;
     margin: 3rem 0;
-    margin-top: 7.5rem;
+    
 }
 
 .categoriesAndBlogs {
@@ -28,9 +44,8 @@
     align-items: center;
     gap: 3rem;
     color: #333;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
-
 
 .category {
     cursor: pointer;
@@ -45,18 +60,46 @@
     color: #fff;
 }
 
-.blogs {
+
+/* .blogs {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+       justify-content: flex-start;
     gap: 5rem;
+       width: 100%;
+} */
+
+.blogs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    width: 100%;
 }
 
-.blog {
+/* .blog {
     width: 550px;
     height: 350px;
     position: relative;
     margin-bottom: 2.5rem;
+} */
+
+.blog {
+    width: 100%;
+    /* position: relative; */
+    /* margin-bottom: 1rem; */
+    /* Ensure space between blog cards */
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.blog>h4 {
+    font-size: 20px;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+      
 }
 
 .blog>a>img {
@@ -64,11 +107,20 @@
     width: 100%;
 }
 
-.categoryAndMetadata {
+/* .categoryAndMetadata {
     margin-top: 1rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    margin-bottom: 1.25rem;
+} */
+.categoryAndMetadata {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows items to wrap on smaller widths */
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
     margin-bottom: 1.25rem;
 }
 
@@ -93,7 +145,8 @@
 
 .blogs>.blog>.blogData>h4 {
     font-size: 32px;
-    margin-bottom: 0.75rem;
+    margin: 1rem 0;
+    word-break: break-word;   
 }
 
 .blogDesc {
@@ -127,6 +180,7 @@
     margin-top: 1.25rem;
     transition: 150ms all ease;
     cursor: pointer;
+    
 }
 
 .readMore:hover{
@@ -140,11 +194,111 @@
     color: #222;
 }
 
-.blogImage {
+/* .blogImage {
     width: 100%;
     max-width: 400px;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+} */
+
+.blog>a>img,
+.blogImage {
+    width: 100% !important;
+    height: 350px !important;
+    /* Keep fixed height */
+    object-fit: cover;
+    /* ✅ No distortion */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .blogs {
+        gap: 2rem;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+    }
+
+    .blog {
+        width: 90%;
+        height: auto;
+    }
+
+    .blogs>.blog>.blogData>h4 {
+        font-size: 24px;
+    }
+
+    .blogDesc {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .categories {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;      
+    }
+
+/*        
+            .blogs {
+                gap: 1.5rem;
+            } */
+        
+    .blog {
+        width: 100%;
+        height: auto;       
+    }
+
+    .blogData {
+        /* padding: 0 0.5rem; */
+        padding: 0 1rem 1rem 1rem;
+    }
+        /* .categoryAndMetadata {
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+                margin-bottom: 0.75rem;  
+        } */
+                .categoryAndMetadata {
+                    flex-wrap: wrap;
+                    /* only if absolutely needed */
+                    row-gap: 0.25rem;
+                }
+
+        /* .metadata {
+            display: flex;
+            align-items: center;
+                gap: 0.25rem;
+                                margin-top: 0;
+                                            }
+
+                .blog .category {
+                   font-size: 18px;
+                } */
+                                  .blog .category {
+                                      margin: 0;
+                                      padding: 0.2rem 0.75rem;
+                                      font-size: 18px;
+                                
+                                  }
+                
+                                  .metadata {
+                                      display: flex;
+                                      align-items: center;
+                                      gap: 0.5rem;
+                                      margin: 0;
+                                    /* margin-right: 5rem; */
+                                  }
+                                                                  .likesMetadata {  
+                                                                                                                                   
+                                                                      font-weight: bold;
+                                                                      font-size: 16px;
+                                                                      margin-right: 15rem;
+                                                                  }
+
 }

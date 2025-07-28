@@ -148,6 +148,8 @@ const verifyToken = require("../middlewares/verifyToken");
 
 // Get all blogs
 blogController.get("/getAll", async (req, res) => {
+  console.log("Fetched blogs:", data);
+
   try {
     const blogs = await Blog.find({}).populate("userId", "-password");
     res.status(200).json(blogs);

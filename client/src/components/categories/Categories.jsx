@@ -125,7 +125,8 @@ import { MdOutlinePreview } from "react-icons/md";
 import { AiFillLike } from "react-icons/ai";
 import { FiArrowRight } from "react-icons/fi";
 
-import { request } from "../../utils/fetchApi";
+// import { request } from "../../utils/fetchApi";
+import { request, BASE_URL } from "../../utils/fetchApi";
 
 const Categories = () => {
   const [blogs, setBlogs] = useState([]);
@@ -155,7 +156,8 @@ const Categories = () => {
         // const BASE_URL = "https://blogapp-hv1n.onrender.com";
 
         if (activeCategory === "all") {
-          data = await request(`${BASE_URL}/blog/getAll`, "GET");
+          // data = await request(`${BASE_URL}/blog/getAll`, "GET");
+          data = await request("/blog/getAll", "GET");
         } else {
           data = await request(
             `${BASE_URL}/blog/category/${activeCategory}`,
@@ -181,13 +183,27 @@ const Categories = () => {
         <h3>Select a category</h3>
         <div className={classes.categoriesAndBlogs}>
           <div className={classes.categories}>
-            {categories.map((category) => (
+            {/* {categories.map((category) => (
               <span
                 key={crypto.randomUUID()}
                 className={`${classes.category} ${
                   activeCategory === category ? classes.active : ""
                 }`}
                 onClick={() => setActiveCategory(category)}
+              >
+                {category}
+              </span>
+            ))} */}
+            {categories.map((category) => (
+              <span
+                key={crypto.randomUUID()}
+                className={`${classes.category} ${
+                  activeCategory === category ? classes.active : ""
+                }`}
+                onClick={() => {
+                  console.log("Category clicked:", category);
+                  setActiveCategory(category);
+                }}
               >
                 {category}
               </span>
@@ -218,9 +234,10 @@ const Categories = () => {
                       /> */}
                       <img
                         className={classes.blogImage}
-                        src={`https://blogapp-hv1n.onrender.com/images/${
-                          blog.photo?.trim() || "design.jpg"
-                        }`}
+                        src={`${BASE_URL}/images/${blog.photo?.trim()}`}
+                        // src={`${BASE_URL}/images/${
+                        //   blog.photo?.trim() || "design.jpg"
+                        // }`}
                         alt={blog.title}
                       />
                     </Link>
@@ -233,7 +250,10 @@ const Categories = () => {
                         <div className={classes.metadata}>
                           <MdOutlinePreview /> {blog.views} views
                         </div>
-                        <div className={classes.metadata}>
+                        {/* <div className={classes.metadata}> */}
+                        <div
+                          className={`${classes.metadata} ${classes.likesMetadata}`}
+                        >
                           <AiFillLike /> {blog.likes.length} likes
                         </div>
                       </div>

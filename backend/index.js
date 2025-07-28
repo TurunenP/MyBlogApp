@@ -168,6 +168,11 @@ app.use((req, res, next) => {
   res.status(404).json({ error: "Route not found" });
 });
 
+const PORT = process.env.PORT;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server running on Render's port ${PORT}`);
+});
+
 // Start server
 // const PORT = process.env.PORT || 5001;
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
@@ -180,8 +185,3 @@ app.use((req, res, next) => {
 //   process.exit(1);
 // }
 // app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
-
-const PORT = process.env.PORT;
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`✅ Server running on Render's port ${PORT}`);
-});

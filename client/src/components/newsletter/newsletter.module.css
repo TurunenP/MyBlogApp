@@ -1,7 +1,8 @@
 .container{
     height: 100%;
     width: 100%;
-    margin-top: 2.5rem;
+    margin-top: 15.5rem;
+    
 }
 
 .wrapper{
@@ -56,4 +57,33 @@
 .wrapper > .inputContainer > .sendIcon{
     margin-right: 0.5rem;
     font-size: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .wrapper>.inputContainer {
+        width: 100%;
+        max-width: 90%;
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0.25rem 1rem;
+    }
+
+    .titles>h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .titles>h5 {
+        font-size: 16px;
+    }
+
+    .wrapper>.inputContainer>input {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .wrapper>.inputContainer>.sendIcon {
+        font-size: 18px;
+    }
 }
