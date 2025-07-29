@@ -57,6 +57,9 @@
 // const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 // console.log("BASE_URL used by fetchApi:", BASE_URL);
 
+export const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+console.log("BASE_URL used by fetchApi:", BASE_URL);
+
 export const request = async (url, method, body, token) => {
   const options = {
     method,
@@ -78,4 +81,4 @@ export const request = async (url, method, body, token) => {
   return data;
 };
 
-export const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+//export const BASE_URL = process.env.REACT_APP_BACKEND_URL;

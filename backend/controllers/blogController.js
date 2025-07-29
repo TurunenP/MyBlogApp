@@ -148,12 +148,13 @@ const verifyToken = require("../middlewares/verifyToken");
 
 // Get all blogs
 blogController.get("/getAll", async (req, res) => {
-  console.log("Fetched blogs:", data);
-
+  // console.log("Fetched blogs:", data);
   try {
     const blogs = await Blog.find({}).populate("userId", "-password");
+    console.log("Fetched blogs:", blogs);
     res.status(200).json(blogs);
   } catch (error) {
+    console.error("Error fetching blogs:", error);
     res.status(500).json(error);
   }
 });

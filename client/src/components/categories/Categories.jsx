@@ -143,26 +143,25 @@ const Categories = () => {
   ];
 
   // Fetch blogs based on active category
-  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+  //const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const fetchBlogsByCategory = async () => {
       try {
         let data;
+
         // if (activeCategory === "all") {
+        //   // data = await request(`${BASE_URL}/blog/getAll`, "GET");
         //   data = await request("/blog/getAll", "GET");
         // } else {
-        //            data = await request(`/blog/category/${activeCategory}`, "GET");
+        //   data = await request(
+        //     `${BASE_URL}/blog/category/${activeCategory}`,
+        //     "GET"
+        //   );
         // }
-        // const BASE_URL = "https://blogapp-hv1n.onrender.com";
-
         if (activeCategory === "all") {
-          // data = await request(`${BASE_URL}/blog/getAll`, "GET");
           data = await request("/blog/getAll", "GET");
         } else {
-          data = await request(
-            `${BASE_URL}/blog/category/${activeCategory}`,
-            "GET"
-          );
+          data = await request(`/blog/category/${activeCategory}`, "GET");
         }
 
         console.log("Active category:", activeCategory);
@@ -183,27 +182,13 @@ const Categories = () => {
         <h3>Select a category</h3>
         <div className={classes.categoriesAndBlogs}>
           <div className={classes.categories}>
-            {/* {categories.map((category) => (
-              <span
-                key={crypto.randomUUID()}
-                className={`${classes.category} ${
-                  activeCategory === category ? classes.active : ""
-                }`}
-                onClick={() => setActiveCategory(category)}
-              >
-                {category}
-              </span>
-            ))} */}
             {categories.map((category) => (
               <span
                 key={crypto.randomUUID()}
                 className={`${classes.category} ${
                   activeCategory === category ? classes.active : ""
                 }`}
-                onClick={() => {
-                  console.log("Category clicked:", category);
-                  setActiveCategory(category);
-                }}
+                onClick={() => setActiveCategory(category)}
               >
                 {category}
               </span>
