@@ -106,12 +106,23 @@ mongoose
 
 // Middleware
 // app.use(cors());
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://myblogapp-1.onrender.com"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3000", "https://myblogapp-1.onrender.com"],
+//     credentials: true,
+//   })
+// );
+
+cors({
+  origin: [
+    // "http://localhost:3000",
+    // "https://myblogapp-1.onrender.com",
+    // "https://myblogapp-wtcv.onrender.com",
+    "https://myblogapp-wtcv.onrender.com",
+  ],
+  credentials: true,
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
