@@ -22,25 +22,41 @@ const BlogDetails = () => {
   const { id } = useParams();
   const { user, token } = useSelector((state) => state.auth);
 
-  useEffect(
-    () => {
-      const fetchBlogDetails = async () => {
-        try {
-          const options = { Authorization: `Bearer ${token}` };
-          const data = await request(`/blog/find/${id}`, "GET", options);
-          setBlogDetails(data);
-          setIsLiked(data.likes.includes(user._id));
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      fetchBlogDetails();
-    },
-    // [id]);
-    [id, token, user._id]
-  );
+  // useEffect(
+  //   () => {
+  //     const fetchBlogDetails = async () => {
+  //       try {
+  //         const options = { Authorization: `Bearer ${token}` };
+  //         const data = await request(`/blog/find/${id}`, "GET", options);
+  //         setBlogDetails(data);
+  //         setIsLiked(data.likes.includes(user._id));
+  //       } catch (error) {
+  //         console.error(error);
+  //       }
+  //     };
+  //     fetchBlogDetails();
+  //   },
+  //   // [id]);
+  //   [id, token, user._id]
+  // );
 
   // like
+  useEffect(() => {
+    const fetchBlogDetails = async () => {
+      try {
+        const options = token ? { Authorization: `Bearer ${token}` } : {};
+        const data = await request(`/blog/find/${id}`, "GET", options);
+        setBlogDetails(data);
+        if (user) {
+          setIsLiked(data.likes.includes(user._id));
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchBlogDetails();
+  }, [id, token, user?._id]);
+
   const handleLikePost = async () => {
     try {
       const options = { Authorization: `Bearer ${token}` };
@@ -71,7 +87,9 @@ const BlogDetails = () => {
         <div className={classes.wrapper}>
           {/* <img src={`http://localhost:5001/images/${blogDetails?.photo}`} /> */}
           <img
-            src={`http://localhost:5001/images/${blogDetails?.photo}`}
+            // src={`http://localhost:5001/images/${blogDetails?.photo}`
+            // src={`${BASE_URL}/images/${blogDetails?.photo}`}
+            src={`https://myblogapp-1.onrender.com/images/${blogDetails?.photo}`}
             alt={blogDetails?.title || "Blog"}
           />
 
