@@ -4,20 +4,41 @@ import { Link } from "react-router-dom";
 import womanImg from "../../assets/woman.jpg";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ scrollToCategories, scrollToFooter }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <div className={classes.container}>
       <div className={classes.wrapper}>
         <div className={classes.left}>
-          <Link to="/">MyBlogApp</Link>
+          <Link to="/">BlogApp</Link>
         </div>
         <ul className={classes.center}>
-          <li className={classes.listItem}>Home</li>
-          <li className={classes.listItem}>About</li>
-          <li className={classes.listItem}>Contacts</li>
-          <li className={classes.listItem}>Categories</li>
+          <li className={classes.listItem}>
+            {/* <Link to="/">Home</Link> */}
+            Home
+          </li>
+          <li className={classes.listItem}>
+            <Link to="/about">About</Link>
+          </li>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToCategories();
+            }}
+          >
+            Categories
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToFooter();
+            }}
+          >
+            Contacts
+          </a>
         </ul>
         <div className={classes.right}>
           <img

@@ -1,21 +1,57 @@
-import React from 'react'
-import Categories from '../../components/categories/Categories'
-import FeaturedBlogs from '../../components/featuredBlogs/FeaturedBlogs'
-import Footer from '../../components/footer/Footer'
-import Navbar from '../../components/navbar/Navbar'
-import Newsletter from '../../components/newsletter/Newsletter'
-import classes from './home.module.css'
+// import React from 'react'
+// import Categories from '../../components/categories/Categories'
+// import FeaturedBlogs from '../../components/featuredBlogs/FeaturedBlogs'
+// import Footer from '../../components/footer/Footer'
+// import Navbar from '../../components/navbar/Navbar'
+// import Newsletter from '../../components/newsletter/Newsletter'
+// import classes from './home.module.css'
+
+// const Home = () => {
+//   return (
+//     <div>
+//       <Navbar />
+//       <FeaturedBlogs />
+//       <Categories />
+//       <Newsletter />
+//       <Footer />
+//     </div>
+//   )
+// }
+
+// export default Home
+
+import React, { useRef } from "react";
+import Categories from "../../components/categories/Categories";
+import FeaturedBlogs from "../../components/featuredBlogs/FeaturedBlogs";
+import Footer from "../../components/footer/Footer";
+import Navbar from "../../components/navbar/Navbar";
+import Newsletter from "../../components/newsletter/Newsletter";
+import classes from "./home.module.css";
 
 const Home = () => {
+  const categoriesRef = useRef(null);
+  const footerRef = useRef(null);
+
   return (
     <div>
-      <Navbar />
+      <Navbar
+        scrollToCategories={() =>
+          categoriesRef.current?.scrollIntoView({ behavior: "smooth" })
+        }
+        scrollToFooter={() =>
+          footerRef.current?.scrollIntoView({ behavior: "smooth" })
+        }
+      />
       <FeaturedBlogs />
-      <Categories />
+      <div ref={categoriesRef}>
+        <Categories />
+      </div>
       <Newsletter />
-      <Footer />
+      <div ref={footerRef}>
+        <Footer />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

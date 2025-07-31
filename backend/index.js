@@ -115,11 +115,7 @@ mongoose
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://myblogapp-wtcv.onrender.com",
-      // add others if needed
-    ],
+    origin: ["http://localhost:3000", "https://myblogapp-wtcv.onrender.com"],
     credentials: true,
   })
 );
