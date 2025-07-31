@@ -1,152 +1,152 @@
-// import React from "react";
-// import { useState } from "react";
-// import classes from "./blogDetails.module.css";
-// import { useParams, Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import { request } from "../../utils/fetchApi";
-// import Footer from "../../components/footer/Footer";
-// import Navbar from "../../components/navbar/Navbar";
-// import { format } from "timeago.js";
-// import {
-//   AiFillEdit,
-//   AiFillLike,
-//   AiFillDelete,
-//   AiOutlineArrowRight,
-//   AiOutlineLike,
-// } from "react-icons/ai";
+import React from "react";
+import { useState } from "react";
+import classes from "./blogDetails.module.css";
+import { useParams, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { request } from "../../utils/fetchApi";
+import Footer from "../../components/footer/Footer";
+import Navbar from "../../components/navbar/Navbar";
+import { format } from "timeago.js";
+import {
+  AiFillEdit,
+  AiFillLike,
+  AiFillDelete,
+  AiOutlineArrowRight,
+  AiOutlineLike,
+} from "react-icons/ai";
 
-// const BlogDetails = () => {
-//   const [blogDetails, setBlogDetails] = useState("");
-//   const [isLiked, setIsLiked] = useState(false);
-//   const { id } = useParams();
-//   const { user, token } = useSelector((state) => state.auth);
+const BlogDetails = () => {
+  const [blogDetails, setBlogDetails] = useState("");
+  const [isLiked, setIsLiked] = useState(false);
+  const { id } = useParams();
+  const { user, token } = useSelector((state) => state.auth);
 
-//   // useEffect(
-//   //   () => {
-//   //     const fetchBlogDetails = async () => {
-//   //       try {
-//   //         const options = { Authorization: `Bearer ${token}` };
-//   //         const data = await request(`/blog/find/${id}`, "GET", options);
-//   //         setBlogDetails(data);
-//   //         setIsLiked(data.likes.includes(user._id));
-//   //       } catch (error) {
-//   //         console.error(error);
-//   //       }
-//   //     };
-//   //     fetchBlogDetails();
-//   //   },
-//   //   // [id]);
-//   //   [id, token, user._id]
-//   // );
+  // useEffect(
+  //   () => {
+  //     const fetchBlogDetails = async () => {
+  //       try {
+  //         const options = { Authorization: `Bearer ${token}` };
+  //         const data = await request(`/blog/find/${id}`, "GET", options);
+  //         setBlogDetails(data);
+  //         setIsLiked(data.likes.includes(user._id));
+  //       } catch (error) {
+  //         console.error(error);
+  //       }
+  //     };
+  //     fetchBlogDetails();
+  //   },
+  //   // [id]);
+  //   [id, token, user._id]
+  // );
 
-//   // like
-//   useEffect(() => {
-//     const fetchBlogDetails = async () => {
-//       try {
-//         const options = token ? { Authorization: `Bearer ${token}` } : {};
-//         const data = await request(`/blog/find/${id}`, "GET", options);
-//         setBlogDetails(data);
-//         if (user) {
-//           setIsLiked(data.likes.includes(user._id));
-//         }
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
-//     fetchBlogDetails();
-//   }, [id, token, user?._id]);
+  // like
+  useEffect(() => {
+    const fetchBlogDetails = async () => {
+      try {
+        const options = token ? { Authorization: `Bearer ${token}` } : {};
+        const data = await request(`/blog/find/${id}`, "GET", options);
+        setBlogDetails(data);
+        if (user) {
+          setIsLiked(data.likes.includes(user._id));
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchBlogDetails();
+  }, [id, token, user?._id]);
 
-//   const handleLikePost = async () => {
-//     try {
-//       const options = { Authorization: `Bearer ${token}` };
-//       await request(`/blog/likeBlog/${id}`, "PUT", options);
-//       setIsLiked((prev) => !prev);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
+  const handleLikePost = async () => {
+    try {
+      const options = { Authorization: `Bearer ${token}` };
+      await request(`/blog/likeBlog/${id}`, "PUT", options);
+      setIsLiked((prev) => !prev);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-//   // delete
-//   const handleDeleteBlog = async () => {
-//     try {
-//       const options = { Authorization: `Bearer ${token}` };
-//       await request(`/blog/deleteBlog/${id}`, "DELETE", options);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
+  // delete
+  const handleDeleteBlog = async () => {
+    try {
+      const options = { Authorization: `Bearer ${token}` };
+      await request(`/blog/deleteBlog/${id}`, "DELETE", options);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-//   return (
-//     <>
-//       <Navbar />
-//       <div className={classes.container}>
-//         <Link to="/" className={classes.goBack}>
-//           Go Back <AiOutlineArrowRight />
-//         </Link>
-//         <div className={classes.wrapper}>
-//           {/* <img src={`http://localhost:5001/images/${blogDetails?.photo}`} /> */}
-//           <img
-//             // src={`http://localhost:5001/images/${blogDetails?.photo}`
-//             // src={`${BASE_URL}/images/${blogDetails?.photo}`}
-//             src={`https://myblogapp-1.onrender.com/images/${blogDetails?.photo}`}
-//             alt={blogDetails?.title || "Blog"}
-//           />
+  return (
+    <>
+      <Navbar />
+      <div className={classes.container}>
+        <Link to="/" className={classes.goBack}>
+          Go Back <AiOutlineArrowRight />
+        </Link>
+        <div className={classes.wrapper}>
+          {/* <img src={`http://localhost:5001/images/${blogDetails?.photo}`} /> */}
+          <img
+            // src={`http://localhost:5001/images/${blogDetails?.photo}`
+            // src={`${BASE_URL}/images/${blogDetails?.photo}`}
+            src={`https://myblogapp-1.onrender.com/images/${blogDetails?.photo}`}
+            alt={blogDetails?.title || "Blog"}
+          />
 
-//           <div className={classes.titleAndControls}>
-//             <h3 className={classes.title}>{blogDetails?.title}</h3>
-//             {blogDetails?.userId?._id === user._id ? (
-//               <div className={classes.controls}>
-//                 <Link
-//                   to={`/updateBlog/${blogDetails?._id}`}
-//                   className={classes.edit}
-//                 >
-//                   <AiFillEdit />
-//                 </Link>
-//                 <div className={classes.delete}>
-//                   <AiFillDelete onClick={handleDeleteBlog} />
-//                 </div>
-//               </div>
-//             ) : (
-//               <>
-//                 {isLiked ? (
-//                   <div className={classes.like}>
-//                     <AiFillLike onClick={handleLikePost} />
-//                   </div>
-//                 ) : (
-//                   <div className={classes.like}>
-//                     <AiOutlineLike onClick={handleLikePost} />
-//                   </div>
-//                 )}
-//               </>
-//             )}
-//           </div>
-//           <div className={classes.descAndLikesViews}>
-//             <p className={classes.desc}>
-//               <span>Description: </span>
-//               {blogDetails?.desc}
-//             </p>
-//             <div className={classes.likesAndViews}>
-//               <span>{blogDetails?.views} views</span>
-//               <span>{blogDetails?.likes?.length} likes</span>
-//             </div>
-//           </div>
-//           <div className={classes.authorAndCreatedAt}>
-//             <span>
-//               <span>Author:</span> {blogDetails?.userId?.username}
-//             </span>
-//             <span>
-//               <span>Created At:</span> {format(blogDetails?.createdAt)}
-//             </span>
-//           </div>
-//         </div>
-//       </div>
-//       <Footer />
-//     </>
-//   );
-// };
+          <div className={classes.titleAndControls}>
+            <h3 className={classes.title}>{blogDetails?.title}</h3>
+            {blogDetails?.userId?._id === user._id ? (
+              <div className={classes.controls}>
+                <Link
+                  to={`/updateBlog/${blogDetails?._id}`}
+                  className={classes.edit}
+                >
+                  <AiFillEdit />
+                </Link>
+                <div className={classes.delete}>
+                  <AiFillDelete onClick={handleDeleteBlog} />
+                </div>
+              </div>
+            ) : (
+              <>
+                {isLiked ? (
+                  <div className={classes.like}>
+                    <AiFillLike onClick={handleLikePost} />
+                  </div>
+                ) : (
+                  <div className={classes.like}>
+                    <AiOutlineLike onClick={handleLikePost} />
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+          <div className={classes.descAndLikesViews}>
+            <p className={classes.desc}>
+              <span>Description: </span>
+              {blogDetails?.desc}
+            </p>
+            <div className={classes.likesAndViews}>
+              <span>{blogDetails?.views} views</span>
+              <span>{blogDetails?.likes?.length} likes</span>
+            </div>
+          </div>
+          <div className={classes.authorAndCreatedAt}>
+            <span>
+              <span>Author:</span> {blogDetails?.userId?.username}
+            </span>
+            <span>
+              <span>Created At:</span> {format(blogDetails?.createdAt)}
+            </span>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
 
-// export default BlogDetails;
+export default BlogDetails;
 
 // //Working but No image
 
@@ -403,10 +403,11 @@
 //Render 2
 // src/pages/blogDetails/BlogDetails.jsx
 
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import classes from "./blogDetails.module.css";
+// import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
+// import axios from "axios";
+// import classes from "./blogDetails.module.css";
+
 // import React from "react";
 // import { useState } from "react";
 // import classes from "./blogDetails.module.css";
@@ -425,46 +426,46 @@ import classes from "./blogDetails.module.css";
 //   AiOutlineLike,
 // } from "react-icons/ai";
 
-const BlogDetails = () => {
-  const { id } = useParams();
-  const [blog, setBlog] = useState(null);
-  const [error, setError] = useState("");
+// const BlogDetails = () => {
+//   const { id } = useParams();
+//   const [blog, setBlog] = useState(null);
+//   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}/blog/get/${id}`
-        );
-        setBlog(res.data);
-      } catch (err) {
-        console.error("Error fetching blog:", err);
-        setError("Blog not found or server error.");
-      }
-    };
-    fetchBlog();
-  }, [id]);
+//   useEffect(() => {
+//     const fetchBlog = async () => {
+//       try {
+//         const res = await axios.get(
+//           `${process.env.REACT_APP_BACKEND_URL}/blog/get/${id}`
+//         );
+//         setBlog(res.data);
+//       } catch (err) {
+//         console.error("Error fetching blog:", err);
+//         setError("Blog not found or server error.");
+//       }
+//     };
+//     fetchBlog();
+//   }, [id]);
 
-  if (error) return <div className={classes.error}>{error}</div>;
-  if (!blog) return <div className={classes.loading}>Loading...</div>;
+//   if (error) return <div className={classes.error}>{error}</div>;
+//   if (!blog) return <div className={classes.loading}>Loading...</div>;
 
-  return (
-    <div className={classes.blogDetails}>
-      <h1 className={classes.title}>{blog.title}</h1>
-      <p className={classes.author}>By {blog.userId?.username || "Unknown"}</p>
-      <img
-        className={classes.image}
-        src={`${process.env.REACT_APP_BACKEND_URL}/images/${blog.photo}`}
-        alt={blog.title}
-      />
-      <p className={classes.category}>Category: {blog.category}</p>
-      <p className={classes.desc}>{blog.desc}</p>
-      <p className={classes.meta}>
-        Views: {blog.views} | Created:{" "}
-        {new Date(blog.createdAt).toLocaleString()}
-      </p>
-    </div>
-  );
-};
+//   return (
+//     <div className={classes.blogDetails}>
+//       <h1 className={classes.title}>{blog.title}</h1>
+//       <p className={classes.author}>By {blog.userId?.username || "Unknown"}</p>
+//       <img
+//         className={classes.image}
+//         src={`${process.env.REACT_APP_BACKEND_URL}/images/${blog.photo}`}
+//         alt={blog.title}
+//       />
+//       <p className={classes.category}>Category: {blog.category}</p>
+//       <p className={classes.desc}>{blog.desc}</p>
+//       <p className={classes.meta}>
+//         Views: {blog.views} | Created:{" "}
+//         {new Date(blog.createdAt).toLocaleString()}
+//       </p>
+//     </div>
+//   );
+// };
 
-export default BlogDetails;
+// export default BlogDetails;
