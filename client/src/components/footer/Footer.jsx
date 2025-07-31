@@ -17,14 +17,14 @@ const Footer = () => {
         <div className={classes.col}>
           <h2>Contacts</h2>
           <span>Phone: +123 456 789</span>
-          <span>YouTube: MyBlogApp</span>
-          <span>GitHub: MyBlogApp</span>
+          <span>YouTube: BlogApp</span>
+          <span>GitHub: BlogApp</span>
         </div>
         <div className={classes.col}>
           <h2>Location</h2>
-          <span>Continent: Europe</span>
-          <span>Country: Bulgaria</span>
-          <span>Current Location: Bulgaria</span>
+          <span>Continent: Europe Name</span>
+          <span>Country: Country Name</span>
+          <span>Current Location: City Name</span>
         </div>
       </div>
     </footer>

@@ -407,6 +407,23 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import classes from "./blogDetails.module.css";
+// import React from "react";
+// import { useState } from "react";
+// import classes from "./blogDetails.module.css";
+// import { useParams, Link } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import { useEffect } from "react";
+// import { request } from "../../utils/fetchApi";
+// import Footer from "../../components/footer/Footer";
+// import Navbar from "../../components/navbar/Navbar";
+// import { format } from "timeago.js";
+// import {
+//   AiFillEdit,
+//   AiFillLike,
+//   AiFillDelete,
+//   AiOutlineArrowRight,
+//   AiOutlineLike,
+// } from "react-icons/ai";
 
 const BlogDetails = () => {
   const { id } = useParams();

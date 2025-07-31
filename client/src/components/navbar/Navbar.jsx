@@ -19,7 +19,9 @@ const Navbar = ({ scrollToCategories, scrollToFooter }) => {
             Home
           </li>
           <li className={classes.listItem}>
-            <Link to="/about">About</Link>
+            <Link to="/about" className={classes.nav}>
+              About
+            </Link>
           </li>
           <a
             href="#"
@@ -28,7 +30,7 @@ const Navbar = ({ scrollToCategories, scrollToFooter }) => {
               scrollToCategories();
             }}
           >
-            Categories
+            <span className={classes.nav}>Categories</span>
           </a>
           <a
             href="#"
@@ -37,7 +39,7 @@ const Navbar = ({ scrollToCategories, scrollToFooter }) => {
               scrollToFooter();
             }}
           >
-            Contacts
+            <span className={classes.nav}>Contacts</span>
           </a>
         </ul>
         <div className={classes.right}>

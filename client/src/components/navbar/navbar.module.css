@@ -88,6 +88,11 @@
     text-decoration: none;
     color: #fff;
 }
+.nav{
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
+}
 
 /* Mobile responsive */
 @media (max-width: 768px) {
